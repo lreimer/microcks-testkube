@@ -1,0 +1,17 @@
+apiVersion: tests.testkube.io/v1
+kind: TestTrigger
+metadata:
+  name: testtrigger-microservice
+  namespace: testkube
+spec:
+  action: run
+  event: modified
+  execution: testworkflow
+  resource: deployment
+  resourceSelector:
+    labelSelector:
+      matchLabels:
+        app: hands-on-testkube
+  testSelector:
+    name: k6-test-microservice
+    namespace: testkube
