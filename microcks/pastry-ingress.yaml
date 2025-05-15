@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quarkus-api-pastry-ingress
+  namespace: default
+spec:
+  rules:
+  - host: pastry.127.0.0.1.sslip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: quarkus-api-pastry-svc
+            port:
+              number: 8282
+        path: /
+        pathType: Prefix
