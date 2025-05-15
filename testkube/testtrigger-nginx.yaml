@@ -1,18 +1,17 @@
 apiVersion: tests.testkube.io/v1
 kind: TestTrigger
 metadata:
-  name: testtrigger-gitops
+  name: testtrigger-nginx
   namespace: testkube
 spec:
+  action: run
+  event: modified
+  execution: testworkflow
   resource: deployment
   resourceSelector:
-    namespace: default
     labelSelector:
       matchLabels:
         app: nginx
-  event: modified
-  action: run
-  execution: testsuite
   testSelector:
-    name: hands-on-testkube-gitops
+    name: k6-test-nginx
     namespace: testkube
