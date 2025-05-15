@@ -1,0 +1,16 @@
+apiVersion: testworkflows.testkube.io/v1
+kind: TestWorkflow
+metadata:
+  name: demo-testsuite
+  labels:
+    docs: example
+spec:
+  steps:
+    - execute:
+        workflows:
+          - name: gradle-test
+    - delay: 1000ms
+    - execute:
+        workflows:
+          - name: k6-sample
+          - name: postman-sample

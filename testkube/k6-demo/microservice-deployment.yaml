@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hands-on-testkube
+  labels:
+    app: hands-on-testkube
+    type: microservice
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hands-on-testkube
+  template:
+    metadata:
+      labels:
+        app: hands-on-testkube
+    spec:
+      containers:
+      - name: hands-on-testkube
+        image: ghcr.io/lreimer/hands-on-testkube:1.0.0
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "0.5"
+          limits:
+            memory: "512Mi"
+            cpu: "2"
+        ports:
+          - name: http
+            containerPort: 8080
+          - name: management
+            containerPort: 8081
+        env:
+          - name: INFO_DEVELOPER
+            value: "lreimer"
+          - name: INFO_GIT_URL
+            value: "https://github.com/lreimer/hands-on-testkube"

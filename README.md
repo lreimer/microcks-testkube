@@ -23,6 +23,20 @@ kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/re
 kubectl create namespace microcks
 kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.3/deploy/operator-jvm.yaml -n microcks
 kubectl apply -f microcks/microcks-local.yaml -n microcks
+```
+
+## Testkube Demo
+
+```bash
+# make sure you are in the correct K8s context
+kubectl apply -f testkube/gradle-demo/
+kubectl apply -f testkube/k6-demo/
+```
+
+## Microcks Demo
+
+```bash
+# install the Pastry demo API from the Microcks Hub
 
 # making calls against the mock
 http --verify=no get https://microcks.127.0.0.1.sslip.io/rest/API+Pastry+-+2.0/2.0.0/pastry/Millefeuille

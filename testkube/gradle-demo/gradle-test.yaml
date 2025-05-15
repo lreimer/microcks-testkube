@@ -1,0 +1,25 @@
+kind: TestWorkflow
+apiVersion: testworkflows.testkube.io/v1
+metadata:
+  name: gradle-test
+  namespace: testkube
+  labels:
+    test-workflow-templates: "yes"
+    testkube.io/name: Gradle
+spec:
+  use:
+  - name: official/gradle/v1
+  content:
+    git:
+      uri: https://github.com/lreimer/hands-on-testkube.git
+  container:
+    workingDir: /data/repo
+  job:
+    activeDeadlineSeconds: 60
+  steps:
+    - name: Saving artifacts
+      condition: always
+      artifacts:
+        paths:
+          - build/test-results/test/**
+status: {}
