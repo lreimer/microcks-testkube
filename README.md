@@ -31,6 +31,8 @@ kubectl apply -f microcks/microcks-local.yaml -n microcks
 # make sure you are in the correct K8s context
 kubectl apply -f testkube/gradle-demo/
 kubectl apply -f testkube/k6-demo/
+
+open https://app.testkube.io/
 ```
 
 ## Microcks Demo
