@@ -9,3 +9,12 @@ spec:
     url: microcks.127.0.0.1.sslip.io
   keycloak:
     url: keycloak.127.0.0.1.sslip.io
+  features:
+    aiCopilot:
+      enabled: false
+      implementation: openai
+      openai:
+        apiKey: <sk-my-openai-api-token>
+        timeout: 20
+        model: gpt-3.5-turbo
+        maxTokens: 2000
