@@ -1,0 +1,16 @@
+kind: TestWorkflow
+apiVersion: testworkflows.testkube.io/v1
+metadata:
+  name: microcks-test-pastry
+spec:
+  container:
+    image: quay.io/microcks/microcks-cli:1.0.0
+    workingDir: /data
+  steps:
+    - name: Run API test
+      shell: microcks-cli test 'API Pastry - 2.0:2.0.0'
+        http://quarkus-api-pastry-svc.default.svc.cluster.local:8282
+        OPEN_API_SCHEMA --microcksURL=http://microcks.microcks.svc.cluster.local:8080/api/
+        --keycloakClientId=microcks-serviceaccount
+        --keycloakClientSecret="ab54d329-e435-41ae-a900-ec6b3fe15c54"
+        --waitFor=30sec

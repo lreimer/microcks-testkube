@@ -1,7 +1,7 @@
 apiVersion: tests.testkube.io/v1
 kind: TestTrigger
 metadata:
-  name: testtrigger-microservice
+  name: k6-testtrigger-nginx
   namespace: testkube
 spec:
   action: run
@@ -11,7 +11,7 @@ spec:
   resourceSelector:
     labelSelector:
       matchLabels:
-        app: hands-on-testkube
+        app: nginx
   testSelector:
-    name: k6-test-microservice
+    name: k6-test-nginx
     namespace: testkube

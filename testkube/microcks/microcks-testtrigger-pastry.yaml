@@ -1,7 +1,7 @@
 apiVersion: tests.testkube.io/v1
 kind: TestTrigger
 metadata:
-  name: testtrigger-nginx
+  name: microcks-testtrigger-pastry
   namespace: testkube
 spec:
   action: run
@@ -11,7 +11,7 @@ spec:
   resourceSelector:
     labelSelector:
       matchLabels:
-        app: nginx
+        app: quarkus-api-pastry
   testSelector:
-    name: k6-test-nginx
+    name: microcks-test-pastry
     namespace: testkube
