@@ -16,12 +16,12 @@ testkube install ...
 testkube init agent ...
 
 # for now we install the Microcks operator manually
-kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.3/deploy/crd/microckses.microcks.io-v1.yml
-kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.3/deploy/crd/apisources.microcks.io-v1.yml
-kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.3/deploy/crd/secretsources.microcks.io-v1.yml
+kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/crd/microckses.microcks.io-v1.yml
+kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/crd/apisources.microcks.io-v1.yml
+kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/crd/secretsources.microcks.io-v1.yml
 
 kubectl create namespace microcks
-kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.3/deploy/operator-jvm.yaml -n microcks
+kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/operator-jvm.yaml -n microcks
 kubectl apply -f microcks/microcks-local.yaml -n microcks
 ```
 
