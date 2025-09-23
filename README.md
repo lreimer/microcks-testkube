@@ -71,10 +71,15 @@ microcks-cli test 'API Pastry - 2.0:2.0.0' http://quarkus-api-pastry-svc.default
 
 ```bash
 # make sure you are in the correct K8s context
-kubectl apply -f testkube/gradle-demo/
-kubectl apply -f testkube/k6-demo/
-
 open https://app.testkube.io/
+
+# this will deploy the K6 load test for Nginx with trigger
+kubectl apply -f testkube/k6-demo/
+kubectl scale deployment nginx-deployment --replicas 2
+
+# this will deploy the Microcks API test with trigger
+kubectl apply -f testkube/microcks/
+kubectl scale deployment quarkus-api-pastry --replicas 2
 ```
 
 ## Maintainer
