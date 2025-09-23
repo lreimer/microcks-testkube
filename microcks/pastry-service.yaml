@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: quarkus-api-pastry
+  name: quarkus-api-pastry-svc
+  namespace: default
+spec:
+  ports:
+  - port: 8282
+    protocol: TCP
+    targetPort: 8282
+  selector:
+    app: quarkus-api-pastry
+  sessionAffinity: None
+  type: ClusterIP

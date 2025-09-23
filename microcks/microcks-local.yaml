@@ -4,10 +4,8 @@ metadata:
   name: microcks
   namespace: microcks
 spec:
-  version: 1.11.2
+  version: 1.12.1
   microcks:
-    # url: microcks.34.49.54.136.sslip.io
     url: microcks.127.0.0.1.sslip.io
   keycloak:
-    # url: keycloak.34.120.132.11.sslip.io
     url: keycloak.127.0.0.1.sslip.io

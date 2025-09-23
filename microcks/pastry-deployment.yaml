@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: quarkus-api-pastry
+  name: quarkus-api-pastry
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-api-pastry
+  template:
+    metadata:
+      labels:
+        app: quarkus-api-pastry
+    spec:
+      containers:
+      - image: quay.io/microcks/quarkus-api-pastry:latest
+        imagePullPolicy: Always
+        name: quarkus-api-pastry
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        resources: {}
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

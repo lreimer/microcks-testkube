@@ -1,0 +1,22 @@
+apiVersion: microcks.io/v1alpha1
+kind: APISource
+metadata:
+  name: pastry-artifacts
+  namespace: microcks
+  annotations:
+    microcks.io/instance: microcks
+spec:
+  artifacts:
+    - url: https://raw.githubusercontent.com/lreimer/microcks-testkube/refs/heads/main/microcks/APIPastry-openapi.yaml
+      mainArtifact: true
+  importers:
+    - name: Pastry OpenAPI
+      mainArtifact: true
+      active: false
+      repository:
+        url: https://raw.githubusercontent.com/lreimer/microcks-testkube/refs/heads/main/microcks/APIPastry-openapi.yaml
+      labels:
+        domain: food
+        type: rest
+        status: GA
+        team: qaware

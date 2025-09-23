@@ -1,0 +1,13 @@
+apiVersion: microcks.io/v1alpha1
+kind: Test
+metadata:
+  name: tests-apipastries-01
+  namespace: microcks
+  annotations:
+    microcks.io/instance: microcks
+spec:
+  serviceId: "API Pastry - 2.0:2.0.0"
+  testEndpoint: http://quarkus-api-pastry-svc.default.svc.cluster.local:8282
+  runnerType: OPEN_API_SCHEMA
+  timeout: 5000
+  retentionPolicy: DeleteOnSuccess
