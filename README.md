@@ -64,7 +64,7 @@ microcks-cli test 'API Pastry - 2.0:2.0.0' http://quarkus-api-pastry-svc.default
     --microcksURL=https://microcks.127.0.0.1.sslip.io/api/ \
     --keycloakClientId=microcks-serviceaccount \
     --keycloakClientSecret="ab54d329-e435-41ae-a900-ec6b3fe15c54" \
-    --insecure --waitFor=6sec
+    --insecure --waitFor=30sec
 ```
 
 ## Testkube Demo
