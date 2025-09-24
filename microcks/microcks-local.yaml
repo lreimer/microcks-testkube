@@ -9,6 +9,7 @@ spec:
     url: microcks.127.0.0.1.sslip.io
   keycloak:
     url: keycloak.127.0.0.1.sslip.io
+    privateUrl: http://microcks-keycloak.microcks.svc.cluster.local:8080
   features:
     aiCopilot:
       enabled: false
