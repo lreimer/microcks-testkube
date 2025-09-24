@@ -1,6 +1,6 @@
 GCP_PROJECT ?= cloud-native-experience-lab
-GCP_REGION ?= europe-north1
-GCP_ZONE ?= europe-north1-b
+GCP_REGION ?= europe-west4
+GCP_ZONE ?= europe-west4-b
 
 GITHUB_USER ?= lreimer
 CLUSTER_NAME ?= microcks-testkube
@@ -13,14 +13,16 @@ prepare-gcp:
 create-gcp-cluster:
 	@gcloud container clusters create $(CLUSTER_NAME)  \
 	  	--release-channel=regular \
-		--cluster-version=1.32 \
+		--cluster-version=1.33 \
   		--region=$(GCP_REGION) \
+		--enable-ip-alias \
 		--addons HttpLoadBalancing,HorizontalPodAutoscaling \
 		--workload-pool=$(GCP_PROJECT).svc.id.goog \
 		--enable-autoscaling \
 		--num-nodes=1 \
 		--min-nodes=1 --max-nodes=3 \
 		--machine-type=e2-standard-8 \
+		--verbosity=info \
 		--logging=SYSTEM \
     	--monitoring=SYSTEM
 	@kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=$$(gcloud config get-value core/account)
