@@ -6,10 +6,20 @@ metadata:
 spec:
   version: 1.12.1
   microcks:
-    url: microcks.127.0.0.1.sslip.io
+    url: microcks.34.120.54.115.sslip.io
+    grpcIngress:
+      expose: false
   keycloak:
-    url: keycloak.127.0.0.1.sslip.io
+    url: keycloak.34.8.172.33.sslip.io
     privateUrl: http://microcks-keycloak.microcks.svc.cluster.local:8080
+  mongodb:
+      persistent: true
+      volumeSize: 1Gi
+      storageClassName: standard-rwo
+      securityContext:
+        runAsUser: 999
+        runAsGroup: 999
+        fsGroup: 999
   features:
     aiCopilot:
       enabled: false

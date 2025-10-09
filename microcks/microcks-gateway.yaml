@@ -1,0 +1,48 @@
+apiVersion: microcks.io/v1alpha1
+kind: Microcks
+metadata:
+  name: microcks
+  namespace: microcks
+spec:
+  version: 1.12.1
+  commonExpositions:
+    type: 'GATEWAYROUTE'
+    ingress:
+      expose: false
+    gatewayRoute:
+      expose: true
+  microcks:
+    url: microcks.34.49.47.75.sslip.io
+    gatewayRoute:
+      expose: true
+      gatewayRefName: external-https
+      gatewayRefNamespace: microcks
+    grpcGatewayRoute:
+      expose: false
+  keycloak:
+    url: keycloak.34.49.47.75.sslip.io
+    # privateUrl: http://microcks-keycloak.microcks.svc.cluster.local:8080
+    persistent: true
+    storageClassName: standard-rwo
+    volumeSize: 1Gi
+    gatewayRoute:
+      expose: true
+      gatewayRefName: external-https
+      gatewayRefNamespace: microcks
+  mongodb:
+      persistent: true
+      volumeSize: 1Gi
+      storageClassName: standard-rwo
+      securityContext:
+        runAsUser: 999
+        runAsGroup: 999
+        fsGroup: 999
+  features:
+    aiCopilot:
+      enabled: false
+      implementation: openai
+      openai:
+        apiKey: ""
+        timeout: 30
+        model: gpt-3.5-turbo
+        maxTokens: 2000

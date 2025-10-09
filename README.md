@@ -18,7 +18,7 @@ kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/re
 kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/crd/tests.microcks.io-v1.yml
 
 kubectl create namespace microcks
-kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/operator-jvm.yaml -n microcks
+kubectl apply -f https://raw.githubusercontent.com/microcks/microcks-operator/refs/tags/0.0.5/deploy/operator.yaml -n microcks
 
 kubectl apply -f microcks/microcks-local.yaml -n microcks
 
