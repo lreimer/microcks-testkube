@@ -29,6 +29,8 @@ spec:
     metadata:
       labels:
         app: nginx
+        # this here triggers the load test via Testkube when deployed in a Keptn managed cluster
+        keptn.sh/pre-deployment-tasks: "testkube-k6-runner"
     spec:
       containers:
       - name: nginx
