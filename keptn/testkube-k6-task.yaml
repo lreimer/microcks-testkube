@@ -1,0 +1,15 @@
+apiVersion: lifecycle.keptn.sh/v1
+kind: KeptnTaskDefinition
+metadata:
+  name: testkube-k6-runner
+  namespace: default
+spec:  
+  container:
+    name: testkube-runner
+    image: kubeshop/testkube-cli:latest
+    command:
+    - 'sh'
+    - '-c'
+    - |
+      # run the K6 test workflow with Testkube
+      testkube run tw k6-test-nginx -f

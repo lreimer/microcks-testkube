@@ -82,6 +82,27 @@ kubectl apply -f testkube/microcks/
 kubectl scale deployment quarkus-api-pastry --replicas 2
 ```
 
+## Keptn Demo
+
+```bash
+# make sure you have a monitoring stack installed
+helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+
+# make sure Keptn is installed
+# see https://github.com/keptn/lifecycle-toolkit?tab=readme-ov-file#installation
+helm repo add keptn https://charts.lifecycle.keptn.sh
+helm repo update
+helm upgrade --install keptn keptn/keptn -n keptn-system --create-namespace --wait
+
+# enable default namespace for Keptn monitoring
+kubectl annotate ns default keptn.sh/lifecycle-toolkit='enabled'
+
+
+
+kubectl apply -f keptn/metrics-provider.yaml
+kubectl apply -f keptn/metrics.yaml
+```
+
 ## Maintainer
 
 M.-Leander Reimer (@lreimer), <mario-leander.reimer@qaware.de>

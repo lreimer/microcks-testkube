@@ -1,0 +1,19 @@
+apiVersion: lifecycle.keptn.sh/v1
+kind: KeptnTaskDefinition
+metadata:
+  name: microcks-test-runner
+  namespace: default
+spec:  
+  container:
+    name: microcks-runner
+    image: quay.io/microcks/microcks-cli:1.0.0
+    command:
+    - 'sh'
+    - '-c'
+    - |
+      # run the Microcks test workflow with Microcks CLI
+      microcks-cli test 'API Pastry - 2.0:2.0.0' http://quarkus-api-pastry-svc.default.svc.cluster.local:8282 OPEN_API_SCHEMA \
+        --microcksURL=https://microcks.127.0.0.1.sslip.io/api/ \
+        --keycloakClientId=microcks-serviceaccount \
+        --keycloakClientSecret="ab54d329-e435-41ae-a900-ec6b3fe15c54" \
+        --insecure --waitFor=30sec

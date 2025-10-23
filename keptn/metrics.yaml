@@ -1,0 +1,10 @@
+apiVersion: metrics.keptn.sh/v1
+kind: KeptnMetric
+metadata:
+  name: prometheus-http-requests-total
+  namespace: default
+spec:
+  provider:
+    name: prometheus-metrics-provider
+  query: 'prometheus_http_requests_total{code="200", handler="/-/healthy", job="quarkus-api-pastry", namespace="default", service="quarkus-api-pastry"}'
+  fetchIntervalSeconds: 10
